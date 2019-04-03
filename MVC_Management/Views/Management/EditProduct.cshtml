@@ -1,0 +1,15 @@
+﻿@model Products
+<h2>Edycja produktu</h2>
+
+<div class="container">
+    <form asp-controller="Management" asp-action="EditProduct">
+        <input asp-for="ProductId" class="form-control invisible" />
+        <label>Nazwa</label><input asp-for="Name" class="form-control mb-2" />
+        <label>Cena</label><input asp-for="Price" class="form-control mb-2" />
+        <label>Url obrazu</label><input asp-for="ImgUrl" class="form-control mb-2" />
+        <input type="submit" id="btn-edit" value="Zapisz" class="btn btn-info" />
+    </form>
+</div>
+
+
+

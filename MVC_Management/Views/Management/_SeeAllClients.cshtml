@@ -1,0 +1,6 @@
+﻿@model List<Clients>
+<h3>Lista klientów</h3>
+@foreach(var c in Model)
+{
+<p>@c.FirstName @c.LastName</p>
+}

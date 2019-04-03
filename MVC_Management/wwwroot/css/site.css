@@ -35,3 +35,8 @@ body {
         display: none;
     }
 }
+.btn-list{
+    min-width: 200px;
+    margin-bottom: 5px;
+}
+

@@ -1,0 +1,45 @@
+﻿<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+@model List<Products>
+<h3>Lista produktów</h3>
+<br />
+<button class="btn btn-secondary mb-3 float-left" onclick="location.href='/Management/CreateProduct'">Dodaj nowy produkt</button>
+<div class="dropdown float-left ml-2">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sortuj
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="">Po nazwie</a>
+        <a class="dropdown-item" href="">Po cenie</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ProductId</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Url obrazu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+        <tr>
+            <td>@p.ProductId</td>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>@p.ImgUrl</td>
+            <td>
+                <button class="btn btn-secondary" onclick="location.href='/Management/EditProduct/@p.ProductId'">Edytuj</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<script>
+    //$("#btn-delete").click(function () {
+    //    alert("Usunięto produkt");
+    //});
+</script>

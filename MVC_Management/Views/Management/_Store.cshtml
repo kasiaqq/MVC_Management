@@ -1,0 +1,33 @@
+﻿@model List<ProductInStore>
+
+<button class="btn btn-secondary mb-3 float-left" id="btn-storeEnd">Zobacz kończące się produkty</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ProductId</th>
+            <th>Nazwa</th>
+            <th>Ilość</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.Name</td>
+                <td>@p.Amount</td>
+                <td>
+                    <button class="btn btn-secondary" onclick="location.href='/Management/EditStore/@p.ProductId'">Edytuj</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $("#btn-storeEnd").click(function () {
+        $("#content").html("");
+        $.get("StoreSort", function (data) { $("#content").html(data); })
+        $("#btn-storeEnd").addClass("invisible");
+    });
+</script>

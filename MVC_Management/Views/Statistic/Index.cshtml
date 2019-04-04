@@ -1,8 +1,21 @@
-﻿@model List<ProductInStore>
+﻿<div class="row">
+    <div class="col-3">
+        <h2>Index</h2>
+        <button class="btn btn-info btn-list" style="width:100%;" id="btn-popularProducts">Zobacz najczęściej zamawiane produkty</button>
+        <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestOrder">Zobacz najdroższe zamówienie</button>
+        <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestClient">Zobacz klientów, którzy dokonali najwięcej zamówień</button>
+        <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestPayment">Zobacz najczęściej wybierane metody płatności</button>
+        <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestDelivery">Zobacz najczęściej wybierane metody dostarczenia</button>
+    </div>
+    <div class="col-9" id="content"></div>
 
-@foreach (var p in Model)
-{
-    <p>@p.ProductId</p>
-    <p>@p.Name</p>
-    <p>@p.Amount</p>
-}
+    <script type="text/javascript">
+        $("#btn-popularProducts").click(function () {
+            $("#content").html("");
+            $.get("PopularProduct", function (data) { $("#content").html(data); })
+        });
+        $("#btn-bestOrder").click(function () {
+            $("#content").html("");
+            $.get("BestOrder", function (data) { $("#content").html(data); })
+        });
+    </script>

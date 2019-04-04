@@ -90,6 +90,51 @@ namespace MVC_Management.Controllers
             clients = db.Clients.Where(x => x.LastName.StartsWith(text)).ToList();
             return PartialView("_SeeAllClients", clients);
         }
-
+        public IActionResult Store()
+        {
+            SHOPContext db = new SHOPContext();
+            var storeNew = (from p in db.Products
+                         join s in db.Store
+                         on p.ProductId equals s.ProductId
+                         select new { p.ProductId, p.Name, s.Amount }).ToList();
+            var store = storeNew.Select(x => new ProductInStore()
+            {
+                ProductId = x.ProductId,
+                Name = x.Name,
+                Amount = x.Amount
+            }).ToList();
+            return PartialView("_Store", store);
+        }
+        public IActionResult EditStore(int id)
+        {
+            SHOPContext db = new SHOPContext();
+            Store product = db.Store.Where(x => x.ProductId == id).FirstOrDefault();
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult EditStore(Store product)
+        {
+            SHOPContext db = new SHOPContext();
+            Store prod = db.Store.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
+            prod.Amount = product.Amount;
+            db.Entry(prod).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("/Index");
+        }
+        public IActionResult StoreSort()
+        {
+            SHOPContext db = new SHOPContext();
+            var storeNew = (from p in db.Products
+                            join s in db.Store
+                            on p.ProductId equals s.ProductId
+                            select new { p.ProductId, p.Name, s.Amount }).Where(x=>x.Amount<=10).ToList();
+            var store = storeNew.Select(x => new ProductInStore()
+            {
+                ProductId = x.ProductId,
+                Name = x.Name,
+                Amount = x.Amount
+            }).OrderBy(x=>x.Amount).ToList();
+            return PartialView("_Store", store);
+        }
     }
 }

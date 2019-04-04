@@ -1,0 +1,21 @@
+﻿@model List<PopularProduct>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ProductId</th>
+            <th>Nazwa</th>
+            <th>Ilość zamówionych</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.Name</td>
+                <td>@p.Amount</td>
+            </tr>
+        }
+    </tbody>
+</table>

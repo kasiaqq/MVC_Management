@@ -1,6 +1,40 @@
 ﻿@model List<Clients>
 <h3>Lista klientów</h3>
-@foreach(var c in Model)
-{
-<p>@c.FirstName @c.LastName</p>
-}
+<br />
+<h5>Szukaj klienta</h5>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" id="search" placeholder="Wpisz nazwisko">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" id="btn-search"><i class="fas fa-search"></i>
+</button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ClientId</th>
+            <th>Imię Nazwisko</th>
+            <th>E-mail</th>
+            <th>Adres</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.ClientId</td>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.EMail</td>
+                <td>@c.Street @c.BuildingNumber/@c.FlatNumber<br />@c.City, @c.Country</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+   $("#btn-search").click(function () {
+        var text = document.getElementById("search").value;
+        $("#content").html("");
+       $.get("SearchClient", { text: text }, function (data, text) { $("#content").html(data, text); })
+    });
+</script>

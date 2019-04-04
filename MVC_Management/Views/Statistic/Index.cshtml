@@ -1,0 +1,8 @@
+﻿@model List<ProductInStore>
+
+@foreach (var p in Model)
+{
+    <p>@p.ProductId</p>
+    <p>@p.Name</p>
+    <p>@p.Amount</p>
+}

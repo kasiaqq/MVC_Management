@@ -7,8 +7,8 @@
         Sortuj
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-item pointer" id="btn-sortName">Po nazwie</li>
         <li class="dropdown-item pointer" id="btn-sortPrice">Po cenie</li>
+        <li class="dropdown-item pointer" id="btn-sortId">Po id</li>
     </div>
 </div>
 
@@ -25,28 +25,25 @@
     <tbody>
         @foreach (var p in Model)
         {
-        <tr>
-            <td>@p.ProductId</td>
-            <td>@p.Name</td>
-            <td>@p.Price</td>
-            <td><img src="@p.ImgUrl" style="max-width: 10%"/></td>
-            <td>
-                <button class="btn btn-secondary" onclick="location.href='/Management/EditProduct/@p.ProductId'">Edytuj</button>
-            </td>
-        </tr>
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td><img src="@p.ImgUrl" style="max-width: 10%" /></td>
+                <td>
+                    <button class="btn btn-secondary" onclick="location.href='/Management/EditProduct/@p.ProductId'">Edytuj</button>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 <script>
-    //$("#btn-delete").click(function () {
-    //    alert("Usunięto produkt");
-    //});
-    $("#btn-sortName").click(function () {
-        $("#content").html("");
-        $.get("ProductsSortName", function (data) { $("#content").html(data); })
-    });
     $("#btn-sortPrice").click(function () {
         $("#content").html("");
         $.get("ProductsSortPrice", function (data) { $("#content").html(data); })
+    });
+    $("#btn-sortId").click(function () {
+        $("#content").html("");
+        $.get("SeeAllProducts", function (data) { $("#content").html(data); })
     });
 </script>

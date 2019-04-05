@@ -1,0 +1,20 @@
+﻿@model List<BestPD>
+
+    <h4 class="mt-3">Najczęściej wybierane metody płatności</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Metoda dostarczenia</th>
+                <th>Liczba</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.NamePD</td>
+                <td>@p.Count</td>
+            </tr>
+        }
+        </tbody>
+    </table>

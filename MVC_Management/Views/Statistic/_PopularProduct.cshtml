@@ -1,21 +1,22 @@
 ﻿@model List<PopularProduct>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ProductId</th>
-            <th>Nazwa</th>
-            <th>Ilość zamówionych</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
+<h4 class="mt-3">Najczęściej zamawiane produkty</h4>
+    <table class="table">
+        <thead>
             <tr>
-                <td>@p.ProductId</td>
-                <td>@p.Name</td>
-                <td>@p.Amount</td>
+                <th>ProductId</th>
+                <th>Nazwa</th>
+                <th>Ilość zamówionych</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.ProductId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Amount</td>
+                </tr>
+            }
+        </tbody>
+    </table>

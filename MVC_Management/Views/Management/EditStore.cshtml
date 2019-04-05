@@ -4,7 +4,13 @@
 <h5>Edycja produktu Id=@Model.ProductId</h5>
 <form asp-controller="Management" asp-action="EditStore">
     <label>Ilość</label><input asp-for="Amount" class="form-control mb-2" />
-    <input type="submit" id="btn-edit" value="Zapisz" class="btn btn-info" />
+    @*<input type="submit" id="btn-edit" value="Zapisz" class="btn btn-info" />*@
+    <input id="btn-edit" value="Zapisz" class="btn btn-info" />
     <input asp-for="Id" class="form-control invisible" />
     <input asp-for="ProductId" class="form-control invisible" />
 </form>
+<script>
+    $("#btn-edit").click(function () {
+        alert("Nie masz uprawnień do tej akcji");
+    });
+</script>

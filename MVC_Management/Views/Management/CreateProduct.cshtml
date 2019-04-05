@@ -6,6 +6,12 @@
         <label>Nazwa</label><input asp-for="Name" class="form-control mb-2" />
         <label>Cena</label><input asp-for="Price" class="form-control mb-2" />
         <label>Url obrazu</label><input asp-for="ImgUrl" class="form-control mb-2" />
-        <input type="submit" id="btn-create" value="Zapisz" class="btn btn-info" />
+        @*<input type="submit" id="btn-create" value="Zapisz" class="btn btn-info" />*@
+        <input id="btn-create" value="Zapisz" class="btn btn-info" />
     </form>
 </div>
+<script>
+    $("#btn-create").click(function () {
+        alert("Nie masz uprawnień do tej akcji");
+    });
+</script>

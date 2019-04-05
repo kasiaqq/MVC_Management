@@ -46,12 +46,21 @@ namespace MVC_Management.Controllers
         public IActionResult CreateProduct(Products product)
         {
             SHOPContext db = new SHOPContext();
-            db.Products.Add(product);
-            db.SaveChanges();
-            var newProduct = db.Products.Where(x => x.Name == product.Name).FirstOrDefault();
-            db.Store.Add(new Store() { ProductId = newProduct.ProductId, Amount = 0});
-            db.SaveChanges();
-            return RedirectToAction("/Confirmation");
+            var list = db.Products.Where(x => x.Name == product.Name).ToList();
+            if (list.Count == 0)
+            {
+                db.Products.Add(product);
+                db.SaveChanges();
+                var newProduct = db.Products.Where(x => x.Name == product.Name).FirstOrDefault();
+                db.Store.Add(new Store() { ProductId = newProduct.ProductId, Amount = 0 });
+                db.SaveChanges();
+                return RedirectToAction("/Confirmation");
+            }
+            else
+            {
+                return Content("Produkt o takiej nazwie już istnieje w bazie danych.\n Wpisz inną nazwę.");
+            }
+           
         }
         public IActionResult Confirmation()
         {

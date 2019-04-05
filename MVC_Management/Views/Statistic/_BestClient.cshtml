@@ -1,0 +1,20 @@
+﻿@model List<BestClient>
+
+<h4  class="mt-3">Klienci, którzy dokonali najwięcej zamówień</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imię i nazwisko Klienta</th>
+            <th>Liczba zamówień</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.FirstName @p.LastName</td>
+                <td>@p.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,6 +1,6 @@
-﻿<div class="row">
+﻿<div class="row mt-3">
     <div class="col-3">
-        <h2>Index</h2>
+        <h4>Statystyki</h4>
         <button class="btn btn-info btn-list" style="width:100%;" id="btn-popularProducts">Zobacz najczęściej zamawiane produkty</button>
         <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestOrder">Zobacz najdroższe zamówienie</button>
         <button class="btn btn-info btn-list" style="width:100%;" id="btn-bestClient">Zobacz klientów, którzy dokonali najwięcej zamówień</button>
@@ -17,5 +17,17 @@
         $("#btn-bestOrder").click(function () {
             $("#content").html("");
             $.get("BestOrder", function (data) { $("#content").html(data); })
+        });
+        $("#btn-bestClient").click(function () {
+            $("#content").html("");
+            $.get("BestClient", function (data) { $("#content").html(data); })
+        });
+        $("#btn-bestPayment").click(function () {
+            $("#content").html("");
+            $.get("BestPayment", function (data) { $("#content").html(data); })
+        });
+        $("#btn-bestDelivery").click(function () {
+            $("#content").html("");
+            $.get("BestDelivery", function (data) { $("#content").html(data); })
         });
     </script>

@@ -25,15 +25,15 @@
     <tbody>
         @foreach (var p in Model)
         {
-        <tr>
-            <td>@p.ProductId</td>
-            <td>@p.Name</td>
-            <td>@p.Price</td>
-            <td><img src="@p.ImgUrl" style="max-width: 10%"/></td>
-            <td>
-                <button class="btn btn-secondary" onclick="location.href='/Management/EditProduct/@p.ProductId'">Edytuj</button>
-            </td>
-        </tr>
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td><img src="@p.ImgUrl" style="max-width: 10%" /></td>
+                <td>
+                    <button class="btn btn-secondary" onclick="location.href='/Management/EditProduct/@p.ProductId'">Edytuj</button>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
